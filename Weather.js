@@ -25,18 +25,18 @@ for (let i = 0; i < arrCiudades.length; i++) {
 
 let seleccion = select_tag[0].onchange = (ciudad) => {
     if (ciudad.target.value !== 'null') {
-        request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + ciudad.target.value + '&appid=ab330cff9f93cc2735e3342473038b18');
+        request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + ciudad.target.value + '&appid=ab330cff9f93cc2735e3342473038b18&units=metric');
 
         request.onload = () => {
             if (request.readyState === 4) {
                 let datosCiudadSeleccionada = JSON.parse(request.response);
                 console.log(datosCiudadSeleccionada);
                 divDatos.innerHTML = `<br>Los datos para ${ ciudad.target.value} son:<br>
-                                    <br>Temperatura Actual: ${ datosCiudadSeleccionada.main.temp }º Kelvin<br>
+                                    <br>Temperatura Actual: ${ datosCiudadSeleccionada.main.temp }º Celsius<br>
                                     Humedad: ${ datosCiudadSeleccionada.main.humidity }%<br>
                                     Presion atmosferica: ${ datosCiudadSeleccionada.main.pressure } bar/es<br>
-                                    Temperatura máxima hoy: ${ datosCiudadSeleccionada.main.temp_max } º Kelvin<br>
-                                    Temperatura mínima hoy: ${ datosCiudadSeleccionada.main.temp_min } º Kelvin `;
+                                    Temperatura máxima hoy: ${ datosCiudadSeleccionada.main.temp_max } º Celsius<br>
+                                    Temperatura mínima hoy: ${ datosCiudadSeleccionada.main.temp_min } º Celsius `;
                                    
 
 
